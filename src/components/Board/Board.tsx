@@ -4,19 +4,24 @@ import "./Board.css";
 export const Board = () => {
 	const [board, setBoard] = useState(Array(9).fill(null));
 	const [xIsNext, setXIsNext] = useState(true);
-	const [winner, setWinner] = useState("");
+	const [gameOn, setGameOn] = useState(false);
 	const gameWinner = calculateWinner(board as []);
 	let status;
 	if (gameWinner) {
 		status = `Winner is ${gameWinner}`;
 	} else {
-		status = "Next player: " + (xIsNext ? "X" : "O");
+		if (gameOn === false) {
+			status = "Player X Start";
+		} else {
+			status = "Next player: " + (xIsNext ? "X" : "O");
+		}
 	}
 
 	const resetBoard = () => {
 		setBoard((prevState) => (prevState = Array(9).fill(null)));
 	};
 	const handleClick = (index: number): void => {
+		gameOn === false && setGameOn(true);
 		const newBoard = board.slice();
 		if (xIsNext) {
 			newBoard[index] = "X";
