@@ -1,6 +1,6 @@
 .square {
-	height: 50px;
-	width: 50px;
+	height: 33%;
+	width: 33%;
 	/* border: 1px solid rgba(black, black, black, 0.7); */
 	background-color: white;
 	display: flex;
