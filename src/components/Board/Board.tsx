@@ -10,7 +10,7 @@ export const Board = () => {
 	if (gameWinner) {
 		status = `Winner is ${gameWinner}`;
 	} else {
-		if (gameOn === false) {
+		if (gameOn === false && gameWinner === "") {
 			status = "Player X Start";
 		} else {
 			status = "Next player: " + (xIsNext ? "X" : "O");
@@ -22,6 +22,10 @@ export const Board = () => {
 	};
 	const handleClick = (index: number): void => {
 		gameOn === false && setGameOn(true);
+		if (gameWinner) {
+			setGameOn(false);
+			return;
+		}
 		const newBoard = board.slice();
 		if (xIsNext) {
 			newBoard[index] = "X";
@@ -50,7 +54,7 @@ export const Board = () => {
 				})}
 			</div>
 			<button className="reset-button" onClick={resetBoard}>
-				Reset
+				{gameWinner ? "Play Again" : "Reset"}
 			</button>
 		</div>
 	);
