@@ -32,6 +32,7 @@ export const Board = () => {
 		}
 		setBoard((board) => (board = newBoard));
 	};
+
 	return (
 		<div>
 			<p>{status && <span>{status}</span>}</p>

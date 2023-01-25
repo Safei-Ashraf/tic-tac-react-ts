@@ -6,7 +6,11 @@ interface SquareProps {
 
 export const Square = ({ val, onClick }: SquareProps): JSX.Element => {
 	return (
-		<button className="square" onClick={onClick}>
+		<button
+			className="square"
+			onClick={onClick}
+			style={{ color: val === "X" ? "red" : "blue" }}
+		>
 			{val}
 		</button>
 	);
