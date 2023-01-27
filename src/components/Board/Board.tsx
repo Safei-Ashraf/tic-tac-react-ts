@@ -7,6 +7,7 @@ export const Board = () => {
 	const [gameOn, setGameOn] = useState(false);
 	const gameWinner = calculateWinner(board as []);
 	let status;
+
 	if (gameWinner) {
 		status = `Winner is ${gameWinner}`;
 	} else {
@@ -27,6 +28,7 @@ export const Board = () => {
 			return;
 		}
 		const newBoard = board.slice();
+		if (newBoard[index] !== null) return;
 		if (xIsNext) {
 			newBoard[index] = "X";
 			setXIsNext(false);
@@ -34,6 +36,7 @@ export const Board = () => {
 			newBoard[index] = "O";
 			setXIsNext(true);
 		}
+
 		setBoard((board) => (board = newBoard));
 	};
 
